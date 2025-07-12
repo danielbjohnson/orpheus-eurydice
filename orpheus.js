@@ -1,10 +1,19 @@
 
-function prints(text){
+async function prints(text){
     var targetElement=document.createElement('p');
-    targetElement.append(text);
     document.querySelector("main").appendChild(targetElement);
+    var i=0;
+    await typewriter(targetElement,text,i);
+    //targetElement.append(text);
 }
 
+function typewriter(targetElement,text,i) {
+        if (i < text.length) {
+            targetElement.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(()=>{typewriter(targetElement,text,i)}, 10);
+        }
+}
 
 function input(buttonA,buttonB){
     return new Promise ((resolve) => {
@@ -25,6 +34,14 @@ async function make_choice(optionA,optionB){
     buttonA.remove();
     buttonB.remove();
     return thisuserChoice
+}
+
+async function next_scene(){
+    var buttonC = document.createElement('button');
+    buttonC.textContent="Continue";
+    document.querySelector("main").appendChild(buttonC);
+    await input(buttonC, buttonC);
+    buttonC.remove();
 }
 
 async function play_scene(scene){
@@ -57,7 +74,7 @@ async function play_scene(scene){
             break;
         case "ATTEMPT":
             prints("Without Eurydice, your life is not worth living. You sing your pain to the vines around you, begging them to end your life. The vines wrap around your neck, but they cannot bring themselves to squeeze away your music, haunted as it may be. You stop singing. If you cannot join Eurydice, you will bring her back to you.")
-            //input("[press Enter to continue] ")
+            await next_scene();
             play_scene("DESCENT")
             break;
         case "DESCENT":
@@ -76,14 +93,14 @@ async function play_scene(scene){
             break;
         case "BOAT SONG":
             prints("You strum your lyre and sing to Charon. His heart, long grown cold to the cries of the dead, is moved by the strength of your love and life. He allows you to step into his rowboat, and he carries you across the river into the Underworld.")
-            boatFeeling = "impressed"
-            //input("[press Enter to continue] ")
+            boatFeeling = "impressed";
+            await next_scene();
             play_scene("CERBERUS")
             break;
         case "BOAT THIEF":
             prints("With an aching heart and empty pockets, you are desperate to reach Eurydice. You slip past Charon - after millennia of dealing with the dead, he is unaccustomed to the speed of the living - and jump in his rowboat, rowing furiously to the other side. As he grows smaller and smaller, you see Charon shake his head disapprovingly at you.")
-            boatFeeling = "stole from"
-            //input("[press Enter to continue] ")
+            boatFeeling = "stole from";
+            await next_scene();
             play_scene("CERBERUS")
             break;
         case "CERBERUS":
@@ -102,14 +119,14 @@ async function play_scene(scene){
             break;
         case "DOG SONG":
             prints("It is hard to get breath out with Cerberus's heavy paw on your chest, but you try anyway. The great beast cocks its heads in confusion as it hears the first notes. Slowly lowering its hackles and stepping off your chest, Cerberus watches as you stand, singing all the while. It closes its eyes and lies down, leaving you free to move deeper forth into the Underworld.")
-            dogFeeling = "soothed"
-            //input("[press Enter to continue] ")
+            dogFeeling = "soothed";
+            await next_scene();
             play_scene("PALACE");
             break;
         case "DOG FETCH":
             prints("Your chest may be held down by Cerberus, but your hand is still free. It hurts your heart to part with your instrument, but it hurts far more to be separated from Eurydice. You toss your lyre to the side, hoping for the great beast to take an interest in it. It makes a sorry sound as it hits the floor, a broken chord as its strings snap. Your small sacrifice is successful, and as Cerberus jumps off you to investigate the thrown instrument, you hurry forth deeper into the Underworld.")
             dogFeeling = "distracted";
-            //input("[press Enter to continue] ")
+            await next_scene();
             play_scene("PALACE");
             break;
         case "PALACE":
@@ -127,8 +144,8 @@ async function play_scene(scene){
             break;
         case "SNEAK":
             prints("You cannot rely on Hades agreeing to release your wife, so you must find her yourself. Sneaking around to the back of the castle, you find a small crack in the otherwise impenetrable walls. You squeeze through it and begin searching through the castle for any clues to where the newly dead might be. But in your haste, you have forgotten about the horde of souls following you. The surge of souls at the walls alert the palace guards to your presence, and it isn't long before skeleton hands are dragging you to face Hades.")
-            //input("[press Enter to continue] ")
-            play_scene("HADES")
+            await next_scene();
+            play_scene("HADES");
             break;
         case "HADES":
             HadesText = "The god of death is not what you expected. His throne room is not a lavish one, just a simple chair in a dimly lit room. Hades is an old man, but there is a fire in his eyes as he regards you. Before you have a chance to open your mouth, he speaks. 'You " + boatFeeling + " my ferryman and you " + dogFeeling + " my dog. Clearly you came here with a purpose. What do the living want in the land of the dead?'"; 
@@ -146,7 +163,7 @@ async function play_scene(scene){
             break;
         case "LIES":
             prints("For millennia, the dead have stayed dead- why would Hades change his mind now? If you want to see Eurydice again, you must lie about your true intentions and wait for an opportunity to bring her back yourself. You tell Hades that you are a musician looking to write songs about the land that no living person has ever sung about. You're starting to get into the act when Hades' eyes flash in anger and he stands up. He is the god of the Underworld- he knows all about death, and he senses your deceit. Insulted by your lies, Hades orders you thrown in the palace dungeons. The guards grab you again, but you push them aside and beg Hades to hear your truth.")
-            //input("[press Enter to continue] ")
+            await next_scene();
             play_scene("TRUTH")
             break;
         case "TRUTH":
@@ -164,8 +181,8 @@ async function play_scene(scene){
             break;
         case "ASCENT":
             prints("Hades leads you to a narrow opening in a rock wall. Through it, a path slopes gradually upward in complete darkness, eventually leading to the surface world. You walk on, confident that you will soon be reunited with the love of your life. You strain your ears to hear any sign of Eurydice following behind you- you find nothing, but you trust that she is there. You walk on, towards your future with your wife.")
-            //input("[press Enter to continue] ")
-            play_scene("QUESTIONS")
+            await next_scene();
+            play_scene("QUESTIONS");
             break;
         case "QUESTIONS":
             prints("The steps start adding up, and you are gasping for breath as you continue up the slope. Behind you, you still hear nothing. A sliver of doubt begins to twist in your mind. Was Hades telling the truth? Is he really letting her follow behind you? You try to push the questions away, but they only come back louder. Have you come all this way to the Underworld, just to blindly leave without your wife? Is she still down there, waiting for you to save her as you walk further and further away? The pressure builds.");
@@ -208,17 +225,17 @@ async function play_scene(scene){
             break;
         case "EMERGENCE":
             prints("It hurts your heart to keep walking when your wife is on the ground behind you, but you must. She follows, she follows, she follows, you remind yourself. The glimmer of light turns into a full opening- just a little further, and you'll be able to see your wife again. Your excitement builds. This is it, this is the end. You leap through the opening and spin around to hold your beloved again. You freeze. You made it out of the Underworld, but Eurydice- Eurydice was just a few steps behind. Her feet still stand in the Underworld.")
-            //input("[press Enter to continue] ")
-            play_scene("LOSS")
+            await next_scene();
+            play_scene("LOSS");
             break;
         case "TURN":
             prints("You can't help it- you need to know if your wife is there, you need to help her continue on. Your song has swayed so many, but you cannot sway yourself. Against your better judgment, with all the pain and love in your heart, you turn around.")
-            //input("[press Enter to continue] ")
+            await next_scene();
             play_scene("LOSS")
             break;
         case "LOSS":
             prints("Eurydice is radiant, the spirit of all that is good and beautiful. She's been there all along, as you knew she would be. You fall to your knees in front of her, both in worship and defeat. Your wife smiles at you softly with nothing but love in her eyes. She fades, returning to the land of Hades. You lie there, alone once more.")
-            //input("[press Enter to continue] ")
+            await next_scene();
             play_scene("SUICIDE")
             break;
         case "SUICIDE":
