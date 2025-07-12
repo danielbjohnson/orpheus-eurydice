@@ -223,14 +223,10 @@ async function play_scene(scene){
             break;
         case "SUICIDE":
             prints("You are broken as you have never been broken before. Not once, but twice, you have lost your wife. There is only one way to return to her now. You sing again, for the last time- and your voice carries an agony so piercing that the whole world stops to listen. The trees cry, and the stones whimper. Your song is so painful that the vines around you coil around your arms and legs and neck, choking out your haunted sound and pulling you into the nearby river. You will never see Eurydice again in life. But in death, you will be together forever.")
+            document.querySelector('footer').style.display="block";
             break;
     }
 }
-
-prints("And now, retracing his steps, he evaded all mischance, \nand Eurydice, regained, approached the upper air, \nhe following behind (since Proserpine had ordained it), \nwhen a sudden madness seized the incautious lover, \none to be forgiven, if the spirits knew how to forgive: \nhe stopped, and forgetful, alas, on the edge of light, \nhis will conquered, he looked back, now, at his Eurydice. \n- Virgil, 29 BCE")
-
-prints("'ARE YOU THERE, LOVE?':")
-prints("an Orpheus and Eurydice game \n\n[press Start to begin] ")
 
 var boatFeeling
 var dogFeeling
