@@ -47,8 +47,7 @@ async function next_scene(){
 async function play_scene(scene){
     switch (scene){
         case "SNAKEBITE":
-            prints("You sit on the forest floor, your dead wife lying still in your arms. Her skin is deathly pale, save for the purple bite marks on her ankle. Heart breaking in pieces, you sing your lament. The world cries with you, but no amount of tears will bring back Eurydice.");
-            prints("Do you accept her death, or do you walk against nature itself to bring her back?");
+            prints("You sit on the forest floor, your dead wife lying still in your arms. Her skin is deathly pale, save for the purple bite marks on her ankle. Heart breaking in pieces, you sing your lament. The world cries with you, but no amount of tears will bring back Eurydice. Do you accept her death, or do you walk against nature itself to bring her back?");
             var userChoice = await make_choice("Accept her death", "Bring her back");
             if (userChoice == "A"){
                 play_scene("PYRE");
@@ -60,8 +59,7 @@ async function play_scene(scene){
             }
             break;
         case "PYRE":
-            prints("Every night you try to sleep, just to see your wife's funeral pyre roar in front of you again. Over and over again, you hear the crackling as she turns to ash. Every night, long after the fire has burned out, you sit there, watching. Eurydice was the light of your life, the muse of your music. Is life worth living without her? You wake up and stare at the ground at your feet. One way or another, you will be reunited with Eurydice. Never again will you be separated.");
-            prints("Do you take your own life to join her in death, or do you push against the rules of your world to find her again in life?");
+            prints("Every night you try to sleep, just to see your wife's funeral pyre roar in front of you again. Over and over again, you hear the crackling as she turns to ash. Every night, long after the fire has burned out, you sit there, watching. Eurydice was the light of your life, the muse of your music. Is life worth living without her? You wake up and stare at the ground at your feet. One way or another, you will be reunited with Eurydice. Never again will you be separated. Do you take your own life to join her in death, or do you push against the rules of your world to find her again in life?");
             userChoice = await make_choice("Join her in death", "Find her in life");
             if (userChoice == "A"){
                 play_scene("ATTEMPT");
@@ -78,8 +76,7 @@ async function play_scene(scene){
             play_scene("DESCENT")
             break;
         case "DESCENT":
-            prints("You stand at the maw of a deep, dark cave. You strain to see into its depths, but you are met with nothing. No breeze flowing, no animals scratching, no light penetrating. You steel your heart; armed only with your trusted lyre, you set forth into the Underworld. You walk through the emptiness for what feels like years, your need for Eurydice being the only thing keeping you from losing your mind in terror. Finally, a sound breaks through the silence: water, lapping against the banks of a river. You step forward to find Charon, ferryman of the River Styx. To ferry you across the river into the Underworld, he demands payment- but you have no coins to give him.");
-            prints("Do you sing for him, or do you try to steal his boat?");
+            prints("You stand at the maw of a deep, dark cave. You strain to see into its depths, but you are met with nothing. No breeze flowing, no animals scratching, no light penetrating. You steel your heart; armed only with your trusted lyre, you set forth into the Underworld. You walk through the emptiness for what feels like years, your need for Eurydice being the only thing keeping you from losing your mind in terror. Finally, a sound breaks through the silence: water, lapping against the banks of a river. You step forward to find Charon, ferryman of the River Styx. To ferry you across the river into the Underworld, he demands payment- but you have no coins to give him. Do you sing for him, or do you try to steal his boat?");
             //global boatFeeling
             userChoice = await make_choice("Sing for him","Steal his boat");
             if (userChoice == "A"){
@@ -104,8 +101,7 @@ async function play_scene(scene){
             play_scene("CERBERUS")
             break;
         case "CERBERUS":
-            prints("You set foot on land again, looking around at the bleak, dead landscape around you. Withered crops and piles of bones litter the ground around you, which makes it hard to ignore when the earth begins rumbling beneath you. You hear dogs barking, and a terrible stench fills the air. Before you can even think about running, the Hound of Hades has approached you and trapped you under its heavy paw. Cerberus's three heads slobber and snap at you.");
-            prints("Do you try to sing to him, or do you throw your lyre as a distraction?");
+            prints("You set foot on land again, looking around at the bleak, dead landscape around you. Withered crops and piles of bones litter the ground around you, which makes it hard to ignore when the earth begins rumbling beneath you. You hear dogs barking, and a terrible stench fills the air. Before you can even think about running, the Hound of Hades has approached you and trapped you under its heavy paw. Cerberus's three heads slobber and snap at you. Do you try to sing to him, or do you throw your lyre as a distraction?");
             //global dogFeeling
             userChoice = await make_choice("Sing to him","Throw your lyre");
             if (userChoice == "A") {
@@ -130,8 +126,7 @@ async function play_scene(scene){
             play_scene("PALACE");
             break;
         case "PALACE":
-            prints("Walking through the Underworld is not a solitary journey. Some souls watch listlessly as you walk by. Some are attracted to your life like moths to a flame, following behind as you walk. Some look at you with pain and rage, unable to understand why the living would ever come to this place before their time. You look desperately for your wife's face, but she is nowhere to be found. As you start to doubt if you can take even one more step, a dark palace looms before you. You approach it with new vigor- what could this be but the home of Hades? Hiding near the gates, you consider your options.");
-            prints("Do you openly walk in to persuade Hades to let Eurydice leave the Underworld, or do you sneak in and try to find her?");
+            prints("Walking through the Underworld is not a solitary journey. Some souls watch listlessly as you walk by. Some are attracted to your life like moths to a flame, following behind as you walk. Some look at you with pain and rage, unable to understand why the living would ever come to this place before their time. You look desperately for your wife's face, but she is nowhere to be found. As you start to doubt if you can take even one more step, a dark palace looms before you. You approach it with new vigor- what could this be but the home of Hades? Hiding near the gates, you consider your options. Do you openly walk in to persuade Hades to let Eurydice leave the Underworld, or do you sneak in and try to find her?");
             userChoice = await make_choice("Openly walk in","Sneak in");
             if (userChoice == "A"){
                 play_scene("HADES")
@@ -148,10 +143,9 @@ async function play_scene(scene){
             play_scene("HADES");
             break;
         case "HADES":
-            HadesText = "The god of death is not what you expected. His throne room is not a lavish one, just a simple chair in a dimly lit room. Hades is an old man, but there is a fire in his eyes as he regards you. Before you have a chance to open your mouth, he speaks. 'You " + boatFeeling + " my ferryman and you " + dogFeeling + " my dog. Clearly you came here with a purpose. What do the living want in the land of the dead?'"; 
+            HadesText = "The god of death is not what you expected. His throne room is not a lavish one, just a simple chair in a dimly lit room. Hades is an old man, but there is a fire in his eyes as he regards you. Before you have a chance to open your mouth, he speaks. 'You " + boatFeeling + " my ferryman and you " + dogFeeling + " my dog. Clearly you came here with a purpose. What do the living want in the land of the dead?' Do you lie to Hades, or do you tell him the truth?"; 
             prints(HadesText);
-            prints("Do you lie to Hades, or do you tell him the truth?");
-            userChoice= await make_choice("Lie","Tell the truth");
+            userChoice= await make_choice("Lie to Hades","Tell the truth");
             if (userChoice == "A"){
                 play_scene("LIES")
             } else if (userChoice=="B") {
@@ -167,8 +161,7 @@ async function play_scene(scene){
             play_scene("TRUTH")
             break;
         case "TRUTH":
-            prints("You step forward and sing to Hades about Eurydice. Your voice takes on all the love you hold for her, all the pain of having lost her, and all the determination to bring her home. Before you met Eurydice, your song was beautiful. With her entrance into your life, your song has become a living thing of its own, hanging in the air with a passion unlike anything this world has ever seen. Tears flow freely down your cheeks as you finish your song. The god of the Underworld has an unreadable expression on his face. Moved by a love he has not seen in ages, he offers you a chance to break the rules of death. You must make the long walk out of the Underworld while Eurydice follows behind you. If your love is true, you will trust that she is following without ever having to check. If the two of you return to the surface without you ever turning around to look for her, Eurydice will be returned to life. If at any point before that, you turn to see her- she will return to the Underworld forever.");
-            prints("Do you accept his offer, or will you live your life alone?");
+            prints("You step forward and sing to Hades about Eurydice. Your voice takes on all the love you hold for her, all the pain of having lost her, and all the determination to bring her home. Before you met Eurydice, your song was beautiful. With her entrance into your life, your song has become a living thing of its own, hanging in the air with a passion unlike anything this world has ever seen. Tears flow freely down your cheeks as you finish your song. The god of the Underworld has an unreadable expression on his face. Moved by a love he has not seen in ages, he offers you a chance to break the rules of death. You must make the long walk out of the Underworld while Eurydice follows behind you. If your love is true, you will trust that she is following without ever having to check. If the two of you return to the surface without you ever turning around to look for her, Eurydice will be returned to life. If at any point before that, you turn to see her- she will return to the Underworld forever. Do you accept his offer, or will you live your life alone?");
             userChoice= await make_choice("Accept","Decline");
             if (userChoice == "A"){
                 play_scene("ASCENT")
@@ -185,8 +178,7 @@ async function play_scene(scene){
             play_scene("QUESTIONS");
             break;
         case "QUESTIONS":
-            prints("The steps start adding up, and you are gasping for breath as you continue up the slope. Behind you, you still hear nothing. A sliver of doubt begins to twist in your mind. Was Hades telling the truth? Is he really letting her follow behind you? You try to push the questions away, but they only come back louder. Have you come all this way to the Underworld, just to blindly leave without your wife? Is she still down there, waiting for you to save her as you walk further and further away? The pressure builds.");
-            prints("Do you check behind you, just for a moment, to see if your wife follows, or do you continue to walk?");
+            prints("The steps start adding up, and you are gasping for breath as you continue up the slope. Behind you, you still hear nothing. A sliver of doubt begins to twist in your mind. Was Hades telling the truth? Is he really letting her follow behind you? You try to push the questions away, but they only come back louder. Have you come all this way to the Underworld, just to blindly leave without your wife? Is she still down there, waiting for you to save her as you walk further and further away? The pressure builds. Do you check behind you, just for a moment, to see if your wife follows, or do you continue to walk?");
             userChoice=await make_choice("Check behind","Continue to walk");
             if (userChoice == "A") {
                 play_scene("TURN");
@@ -198,8 +190,7 @@ async function play_scene(scene){
             }
             break;
         case "MADNESS":
-            prints("You keep walking- you know you must not turn back. Ahead, you see the first glimmer of light, your first hope of emerging from this wretched place. You must not turn back. You pick up the pace, desperate to escape the questions, desperate to escape the sounds, desperate to be with your wife. You must not turn back, you must not turn back, turn back, you must not turn back, turn back, you must not, turn back turn back turn back, you must not turn back.")
-            prints("Do you turn back, or do you continue to walk?")
+            prints("You keep walking- you know you must not turn back. Ahead, you see the first glimmer of light, your first hope of emerging from this wretched place. You must not turn back. You pick up the pace, desperate to escape the questions, desperate to escape the sounds, desperate to be with your wife. You must not turn back, you must not turn back, turn back, you must not turn back, turn back, you must not, turn back turn back turn back, you must not turn back. Do you turn back, or do you continue to walk?")
             userChoice= await make_choice("Turn back","Continue to walk");
             if (userChoice == "A") {
                 play_scene("TURN")
@@ -211,8 +202,7 @@ async function play_scene(scene){
             }
             break;
         case "STUMBLE":
-            prints("You try to quiet the voices crowding your head, needing to get to the surface for Eurydice. Your future together is finally within reach- you just need to keep walking forwards. That deathly silence behind you makes you nervous, but you must trust in your wife and in Hades. Suddenly, you hear gravel slide as someone stumbles and falls behind you. Eurydice!");
-            prints("Do you reach behind to help her up, or do you continue to walk?");
+            prints("You try to quiet the voices crowding your head, needing to get to the surface for Eurydice. Your future together is finally within reach- you just need to keep walking forwards. That deathly silence behind you makes you nervous, but you must trust in your wife and in Hades. Suddenly, you hear gravel slide as someone stumbles and falls behind you. Eurydice! Do you reach behind to help her up, or do you continue to walk?");
             userChoice=await make_choice("Help her up","Continue to walk");
             if (userChoice == "A") {
                 play_scene("TURN")
