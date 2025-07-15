@@ -11,7 +11,7 @@ function typewriter(targetElement,text,i) {
         if (i < text.length) {
             targetElement.innerHTML += text.charAt(i);
             i++;
-            setTimeout(()=>{typewriter(targetElement,text,i)}, 10);
+            setTimeout(()=>{typewriter(targetElement,text,i)}, 30);
         }
 }
 
@@ -164,7 +164,12 @@ async function play_scene(scene){
             play_scene("TRUTH")
             break;
         case "TRUTH":
-            prints("You step forward and sing to Hades about Eurydice. Your voice takes on all the love you hold for her, all the pain of having lost her, and all the determination to bring her home. Before you met Eurydice, your song was beautiful. With her entrance into your life, your song has become a living thing of its own, hanging in the air with a passion unlike anything this world has ever seen. Tears flow freely down your cheeks as you finish your song. The god of the Underworld has an unreadable expression on his face. Moved by a love he has not seen in ages, he offers you a chance to break the rules of death. You must make the long walk out of the Underworld while Eurydice follows behind you. If your love is true, you will trust that she is following without ever having to check. If the two of you return to the surface without you ever turning around to look for her, Eurydice will be returned to life. If at any point before that, you turn to see her- she will return to the Underworld forever. Do you accept his offer, or will you live your life alone?");
+            prints("You step forward and sing to Hades about Eurydice. Your voice takes on all the love you hold for her, all the pain of having lost her, and all the determination to bring her home. Before you met Eurydice, your song was beautiful. With her entrance into your life, your song has become a living thing of its own, hanging in the air with a passion unlike anything this world has ever seen. Tears flow freely down your cheeks as you finish your song.");
+            await next_scene();
+            play_scene("TERMS");
+            break;
+        case "TERMS":
+            prints("The god of the Underworld has an unreadable expression on his face. Moved by a love he has not seen in ages, he offers you a chance to break the rules of death. You must make the long walk out of the Underworld while Eurydice follows behind you. If your love is true, you will trust that she is following without ever having to check. If the two of you return to the surface without you ever turning around to look for her, Eurydice will be returned to life. If at any point before that, you turn to see her- she will return to the Underworld forever. Do you accept his offer, or will you live your life alone?");
             userChoice= await make_choice("Accept","Decline");
             if (userChoice == "A"){
                 play_scene("ASCENT")
@@ -172,7 +177,7 @@ async function play_scene(scene){
                 play_scene("PYRE")
             } else {
                 prints("Something went wrong. Let's try that again.");
-                play_scene("TRUTH");
+                play_scene("TERMS");
             }
             break;
         case "ASCENT":
