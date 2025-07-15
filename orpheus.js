@@ -13,9 +13,6 @@ function typewriter(targetElement,text,i) {
             i++;
             setTimeout(()=>{typewriter(targetElement,text,i)}, 10);
         }
-        if (i%50==0) {
-            window.scrollTo(0, document.body.scrollHeight);
-        }
 }
 
 function input(buttonA,buttonB){
@@ -245,6 +242,9 @@ var boatFeeling
 var dogFeeling
 var HadesText
 //var userChoice
+
+const resize_ob = new ResizeObserver((entries) => {window.scrollTo(0, document.body.scrollHeight);})
+resize_ob.observe(document.querySelector("main"));
 
 var startButton=document.getElementById('start');
 startButton.addEventListener("click",() => {play_scene("SNAKEBITE")});
