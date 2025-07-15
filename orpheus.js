@@ -11,7 +11,7 @@ function typewriter(targetElement,text,i) {
         if (i < text.length) {
             targetElement.innerHTML += text.charAt(i);
             i++;
-            setTimeout(()=>{typewriter(targetElement,text,i)}, 30);
+            setTimeout(()=>{typewriter(targetElement,text,i)}, 25);
         }
 }
 
