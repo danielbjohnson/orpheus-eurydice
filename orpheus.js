@@ -24,27 +24,32 @@ function input(buttonA,buttonB){
 }
 
 async function make_choice(optionA,optionB){
+    var buttonBox=document.createElement('div');
+    buttonBox.classList.add("buttonBox");
     var buttonA=document.createElement('button');
     var buttonB=document.createElement('button');
     buttonA.textContent=optionA;
     buttonB.textContent=optionB;
     buttonA.classList.add("buttonA")
     buttonB.classList.add("buttonB")
-    document.querySelector("main").appendChild(buttonA);
-    document.querySelector("main").appendChild(buttonB);
+    buttonBox.appendChild(buttonA);
+    buttonBox.appendChild(buttonB);
+    document.querySelector("main").appendChild(buttonBox);
     var thisuserChoice = await input(buttonA,buttonB);
-    buttonA.remove();
-    buttonB.remove();
+    buttonBox.remove();
     return thisuserChoice
 }
 
 async function next_scene(){
+    var buttonBox = document.createElement('div');
+    buttonBox.classList.add("buttonBox")
     var buttonC = document.createElement('button');
     buttonC.textContent="Continue";
-    buttonC.classList.add("buttonC")
-    document.querySelector("main").appendChild(buttonC);
+    buttonC.classList.add("buttonC");
+    buttonBox.appendChild(buttonC)
+    document.querySelector("main").appendChild(buttonBox);
     await input(buttonC, buttonC);
-    buttonC.remove();
+    buttonBox.remove();
 }
 
 async function play_scene(scene){

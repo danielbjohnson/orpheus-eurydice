@@ -2,10 +2,19 @@ body{
     font-family:'Courier New', Courier, monospace;
 }
 
+header {
+    text-align:center;
+}
+
 footer {
     display: none;
     background-color:black;
     color:white;
+}
+.buttonBox {
+    display:flex;
+    justify-content: center;
+    justify-items: center;
 }
 
 button {
