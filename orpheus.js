@@ -13,6 +13,9 @@ function typewriter(targetElement,text,i) {
             i++;
             setTimeout(()=>{typewriter(targetElement,text,i)}, 10);
         }
+        if (i%50==0) {
+            window.scrollTo(0, document.body.scrollHeight);
+        }
 }
 
 function input(buttonA,buttonB){
@@ -28,6 +31,8 @@ async function make_choice(optionA,optionB){
     var buttonB=document.createElement('button');
     buttonA.textContent=optionA;
     buttonB.textContent=optionB;
+    buttonA.classList.add("buttonA")
+    buttonB.classList.add("buttonB")
     document.querySelector("main").appendChild(buttonA);
     document.querySelector("main").appendChild(buttonB);
     var thisuserChoice = await input(buttonA,buttonB);
@@ -39,6 +44,7 @@ async function make_choice(optionA,optionB){
 async function next_scene(){
     var buttonC = document.createElement('button');
     buttonC.textContent="Continue";
+    buttonC.classList.add("buttonC")
     document.querySelector("main").appendChild(buttonC);
     await input(buttonC, buttonC);
     buttonC.remove();
